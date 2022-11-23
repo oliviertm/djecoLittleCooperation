@@ -23,25 +23,48 @@ The victory entirely depends on the dice, to the probability to win is defined b
 
 But what is this probability?
 
+## Naive approach
+
+The probability to win is the ratio between the number of winning games with the number of all possible games.
+
+A first naive approach is to use a recursive algorithm to go through all possible games 
+and count how many there are and how many of them are winning games.
+
+This method fails, because there are a infinity of games, 
+due to the fact that some dice throw don't change the game pieces state, 
+but can be repeated without limit before leading to a winning of loosing game end.
+
+Nevertheless, winning or loosing immediately or after some dice throws without effect
+don't correspond to the same probability, each dice throw reducing the probability of the game end by one third.
+
 ## Use a simplier game
 
-To think about this problem, let's take a simplier version with only 1 animal and 1 ice pillard:
+To think about this problem, let's take a simplier version of this game with only 1 animal and 1 ice pillard:
+
+Here is a part of the infinite tree of all possible games with 1 animal and 1 ice pillard:
 
 ```mermaid
 graph TD;
-    R(100)-->IC0(Loose);
-    R-->R1(100);
-    R-->B1(101);
-    R1(100)-->IC1(Loose);
-    R1-->IG1(100);
-    R1-->B11(101);
-    B11-->B11i(...);
-    IG1-->IG1i(...)
-    B1-->IC2(Loose);
-    B1-->IG2(Win);
-    B1-->B2(101);
-    B2-->IC3(Loose);
-    B2-->IG3(Win);
-    B2-->B3(101);
-    B3-->Bi(...)
+    R(100)-->|ice| IC0(Loose);
+    R-->|igloo| R1(100);
+    R-->|animal| B1(101);
+    R1(100)-->|ice| IC1(Loose);
+    R1-->|igloo| IG1(100);
+    R1-->|animal| B11(101);
+    IG1-->|igloo| IG1i(...)
+    B11-->|animal| B11i(...);
+    B1-->|ice| IC2(Loose);
+    B1-->|igloo| IG2(Win);
+    B1-->|animal| B2(101);
+    B2-->|ice| IC3(Loose);
+    B2-->|igloo| IG3(Win);
+    B2-->|animal| B3(101);
+    B3-->|animal| Bi(...)
 ```
+
+We can see above that if we get igloo at the first dice throw, the game stays the same,
+so the next dice throw have exactly the same possible outcomes.
+
+As well, aftter a first animal dice throw, 
+a second a animal dice throw won't change the game state, 
+so another infinite branch of game evolution span from here.
