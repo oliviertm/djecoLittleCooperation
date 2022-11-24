@@ -100,5 +100,14 @@ So what is the result of infinite sum : 1/3 + 1/9 + 1/27 + ... ?
 
 We can guess it without computation:
 
+```mermaid
+gantt
+dateFormat  DD
 
-
+1/3            : done    des11, 2050-01-01, 9d
+1/3            : done    des12, 2050-01-10, 9d
+1/3            : done    des13, 2050-01-20, 9d
+1/3rd          : active  des1, 2050-01-01,9d
+1/9            :         des2, after des1, 3d
+1/27           :         des3, after des2, 1d
+```
