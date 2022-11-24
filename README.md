@@ -1,7 +1,9 @@
-# Djeco Little Cooperation Probability Computer
+# Djeco Little Cooperation Game Infinite Tree Probability Computer
 
 Thus code has been designed to compute the probability to win 
-on a board game made by Djeco and named "Little Cooperation"
+on a [board game made by Djeco](https://www.djeco.com/mobile/jeux.html) and named "Little Cooperation" :
+
+![Djeco Little Cooperation Game](https://www.djeco.com/mobile/images/games/DJ08555G.png)
 
 This game is for 2 years old children, so the rules are very simple,
 but the mathematics behind are not.
@@ -12,14 +14,14 @@ To reach the igloo, they have to cross a bridge supported by 6 ice pillards.
 Each player throw the 6 sides dice to get the action to do :
 
  * Remove an ice pillard (2 dice faces among the 6)
- * Move an animal from start to bridge if there is still an animal at start (2 dice faces among the 6)
- * Move an animal from the bridge to the igloo if there is an animal on the bridge (2 dice faces among the 6)
+ * Move an animal from start to bridge if there is still animals at start (2 dice faces among the 6)
+ * Move an animal from the bridge to the igloo if there are animals on the bridge (2 dice faces among the 6)
 
 If no more ice pillards remains, every players loose.
 
 If all animals reach the igloo, every players win.
 
-The victory entirely depends on the dice, to the probability to win is defined by the rules of this game.
+The victory entirely depends on dice throws, so the probability to win is defined by the rules of this game.
 
 But what is this probability?
 
@@ -31,17 +33,22 @@ A first naive approach is to use a recursive algorithm to go through all possibl
 and count how many there are and how many of them are winning games.
 
 This method fails, because there are a infinity of games, 
-due to the fact that some dice throw don't change the game pieces state, 
-but can be repeated without limit before leading to a winning of loosing game end.
+due to the fact that some dice throws don't change the game's pieces state, 
+but can be repeated without limit before leading to a winning or loosing game's end.
 
-Nevertheless, winning or loosing immediately or after some dice throws without effect
-don't correspond to the same probability, each dice throw reducing the probability of the game end by one third.
+Nevertheless, winning or loosing immediately, or after some dice throws without effect
+don't correspond to the same probability, each dice throw reducing the probability of the game's end by one third.
+
+Therefore, counting the number of winning and loosing game end to compute the probability of win is impossible, 
+because there is an infinite number of winning and loosing game's end.
 
 ## Use a simplier game
 
 To think about this problem, let's take a simplier version of this game with only 1 animal and 1 ice pillard:
 
-Here is a part of the infinite tree of all possible games with 1 animal and 1 ice pillard:
+Here is a part of the infinite tree of all possible games with 1 animal and 1 ice pillard, 
+the number representing the game state meaning:
+Number of ice pillards, number of animals in Igloo, number of animals on Bridge:
 
 ```mermaid
 graph TD;
@@ -65,6 +72,33 @@ graph TD;
 We can see above that if we get igloo at the first dice throw, the game stays the same,
 so the next dice throw have exactly the same possible outcomes.
 
-As well, aftter a first animal dice throw, 
-a second a animal dice throw won't change the game state, 
+As well, after a first 'animal' dice throw, 
+a second 'animal' dice throw won't change the game state, 
 so another infinite branch of game evolution span from here.
+
+As with [Zeno's paradox](https://en.m.wikipedia.org/wiki/Zeno%27s_paradoxes), 
+we may be disturbed by the sum of infinite probabilities, 
+but this isn't incompatible with the finite value of this infinite number of probabilities.
+
+### Zeno's paradox
+
+In Zeno's paradox, Zeno goes from point A to point B by doing each time one half of the distance remaining from him to B.
+
+Intuitively, we guess that Zeno will reach B after an infinite number of times, 
+so the sum of values 1/2 + 1/4 + 1/8 + ... equals 1 after an infinite number of these values.
+
+If we look at the probability to loose in the tree of above, not considering the 'igloo' at first dice throw,
+we see :
+ * Loose at 1/3rd probability
+ * Loose at 1/3rd of 1/3rd probability (through 'Bridge' dice throw)
+ * Loose at 1/3rd of 1/3rd of 1/3rd probability (through two 'Bridge' dice throws)
+ * and so on
+
+We get the same structure as Zeno's paradox, but with 1/3rd instead 1/2.
+
+So what is the result of infinite sum : 1/3 + 1/9 + 1/27 + ... ?
+
+We can guess it without computation:
+
+
+
