@@ -100,14 +100,12 @@ So what is the result of infinite sum : 1/3 + 1/9 + 1/27 + ... ?
 
 We can guess it without computation:
 
-```mermaid
-gantt
-dateFormat  DD
+![Limit of third split serie](ThirdSerieLimit.png)
 
-1/3            : done    des11, 2050-01-01, 9d
-1/3            : done    des12, 2050-01-10, 9d
-1/3            : done    des13, 2050-01-20, 9d
-1/3rd          : active  des1, 2050-01-01,9d
-1/9            :         des2, after des1, 3d
-1/27           :         des3, after des2, 1d
-```
+On the diagram above, A is splitted in three to keep its first third E.
+
+After this, we add to this one third E its one third H, and afterwards the one third of H : L.
+
+As we can see on this diagram, each time the remaining space between the sum and the red line is reduced by a factor 2. This red line represent the half of A.
+
+
