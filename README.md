@@ -104,8 +104,29 @@ We can guess it without computation:
 
 On the diagram above, A is splitted in three to keep its first third E.
 
-After this, we add to this one third E its one third H, and afterwards the one third of H : L.
+After this, we add to this one third E its one third H, and afterwards L, the one third of H
 
-As we can see on this diagram, each time the remaining space between the sum and the red line is reduced by a factor 2. This red line represent the half of A.
+As we can see on this diagram, each time the remaining space between the sum and the red line is reduced by a factor 2.
+This red line represent the half of A.
+
+We can check it by computation:
+
+1/2 = 9/18
+
+1/3 = 6/18
+
+1/2 - 1/3 = 3/6 - 2/6 = 3/18
+
+1/3 * 1/3 = 1/9 = 2/18
+
+1/2 - 1/3 -  ( 1/3 * 1/3 ) = 9/18 - 6/18 - ( 2/18 ) = 1/18
+
+The remaining to 1/2 is actually reduced by 2 when we add 1/3rd of the previous 1/3rd.
+
+Thus, we guess that this infinite sum tends to 1/2 at infinite.
+
+We can therefore compute the probabilities to loose and won in the infinite "101" branch of the tree above.
+
+## Resolve and propagate probabilities
 
 
