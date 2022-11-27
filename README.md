@@ -176,7 +176,7 @@ The bridge branch bring a 1/2 probabilities of both winning and loosing when at 
 
 From 100 node point of view, it is 1/3 * 1/2.
 
-If the 100 node repeat itself infinitely, this node probability will be multiplied by 1/2, so it would become 1/2*1/2.
+If the 100 node repeat itself infinitely, this node probability will be multiplied by 1/2, so it would become 1/2 * 1/2.
 
 This is how we get the probabilities of node 100 :
 
@@ -208,7 +208,7 @@ With the algorithm described above, we can therefore figure out if this method w
 
 And it's working!
 
-You can try to run the python code of this repository by yourself, or just tte the following lines to have the answer to tte initial question:
+You can either run the python code of this repository by yourself, or just read the following lines to have the answer to the initial question:
 
 What is the exact probability to win at this game?
 
