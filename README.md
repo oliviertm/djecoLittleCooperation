@@ -161,7 +161,23 @@ Therefore:
  * The bridge branch bring to the 100 game state probabilities of both winning and loosing of 1/3*1/2 + 1/3*1/2*1/3 + 1/3*1/2*1/3*1/3 + ...
  * The Igloo branch bring to the 100 game state the infinite repetition of the two other probabilities, but nothing more
 
+We can be disturbed by the infinite sum of the bridge branch described above, by it is actually quite the same as the other already seen.
 
+Once on a loosing branch, the probability to loose is 1 (for the ice branch of 101 game state for example).
 
+Nevertheless, from the node immediately above this branch, the loosing probability is 1/3rd of 1.
+
+Now, if we talk about a node with a probability to loose different from 1, let's say 1/2, 
+the probability from the node immediately above will be 1/3*1/2, because 1/3rd of reaching a state with 1/2 probability of loosing.
+
+This is exactly the same with the infinite sum of the bridge branch above, the repeated node probability will actually be the value A shown in the diagram above.
+
+The bridge branch bring a 1/2 probabilities of both winning and loosing when at 101 game state.
+
+From 100 node point of view, it is 1/3*1/2.
+
+If the 100 node repeat itself infinitely, this node probability will be multiplied by 1/2, so it would become 1/2*1/2.
+
+This is how we get the probabilities 
 
 
