@@ -142,3 +142,26 @@ In the simplified game with 1 ice pillard and 1 animal, we just saw that we can 
 To compute the probabilities at game start, we need to compute the probabilities of 100 game state, which is the sum of loosing at 1/3rd and 2 infinite branches.
 
 Fortunately, the probability of one of these infinite branches have just been computed.
+
+Due to this, 100 game state starts a tree with:
+
+ * Loose at 1/3rd (ice branch)
+ * Unknown probabilities of infinite branch of 100 game state (igloo branch leading to same as the node immediately above)
+ * Loose at 1/2 and win at 1/2 once on the 101 game state node itself at 1/3rd (bridge branch)
+
+This configuration quite looks like the previous infinite branch we talked about, because we have only one infinite branch with same game state that the one of the node we are trying to compute probabilities.
+
+Because of this, we can apply the same way of thinking:
+
+The probabilities listed above repeat themselves infinitely with 1/3rd of them each time.
+
+Therefore:
+
+ * The ice branches bring to the 100 game state probabilities a loosing chance of 1/3rd + 1/9th + 1/27th +...
+ * The bridge branch bring to the 100 game state probabilities of both winning and loosing of 1/3*1/2 + 1/3*1/2*1/3 + 1/3*1/2*1/3*1/3 + ...
+ * The Igloo branch bring to the 100 game state the infinite repetition of the two other probabilities, but nothing more
+
+
+
+
+
