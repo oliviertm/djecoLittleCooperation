@@ -102,12 +102,14 @@ We can guess it without computation:
 
 ![Limit of third split serie](ThirdSerieLimit.png)
 
-On the diagram above, A is splitted in three to keep its first third E.
+On the diagram above, the red line represents the half of A.
+A is splitted in three to keep its first third E.
 
 After this, we add to this one third E its one third H, and afterwards L, the one third of H
 
-As we can see on this diagram, each time the remaining space between the sum and the red line is reduced by a factor 2.
-This red line represent the half of A.
+As we can see on this diagram, each time the remaining space between the sum E, E+H and E+H+L, and the red line is half of the center third : F, I and M.
+
+As the third are divided by 3 at each step, the sum gets three times closer to the red line.
 
 We can check it by computation:
 
@@ -115,13 +117,13 @@ We can check it by computation:
 
 1/3 = 6/18
 
-1/2 - 1/3 = 3/6 - 2/6 = 3/18
+1/2 - 1/3 = 9/18 - 6/18 = 3/18
 
 1/3 * 1/3 = 1/9 = 2/18
 
 1/2 - 1/3 -  ( 1/3 * 1/3 ) = 9/18 - 6/18 - ( 2/18 ) = 1/18
 
-The remaining to 1/2 is actually reduced by 2 when we add 1/3rd of the previous 1/3rd.
+The remaining to 1/2 is actually reduced by 3 when we add 1/3rd of the previous 1/3rd.
 
 Thus, we guess that this infinite sum tends to 1/2 at infinite.
 
