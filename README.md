@@ -127,8 +127,18 @@ The remaining to 1/2 is actually reduced by 3 when we add 1/3rd of the previous 
 
 Thus, we guess that this infinite sum tends to 1/2 at infinite.
 
-We can therefore compute the probabilities to loose and won in the infinite "101" branch of the tree above.
+We can therefore compute the probabilities to loose and won in the infinite "101" branch of the tree above:
+
+At each stage, this branch contains 1 win and 1 loose at 1/3rd regarding the node immediately above.
+
+Therefore, at 101 game state, both winning and loosing probabilities correspond to the infinite series we just talked about : 1/3 + 1/9 + 1/27 ...
+
+Because of this, from 101 game state, both winning and loosing probabilities is 1/2.
 
 ## Resolve and propagate probabilities
 
+In the simplified game with 1 ice pillard and 1 animal, we just saw that we can compute thee probabilities of the infinite branch starting at 101 game state.
 
+To compute the probabilities at game start, we need to compute the probabilities of 100 game state, which is the sum of loosing at 1/3rd and 2 infinite branches.
+
+Fortunately, the probability of one of these infinite branches have just been computed.
