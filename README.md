@@ -141,7 +141,7 @@ In the simplified game with 1 ice pillard and 1 animal, we just saw that we can 
 
 To compute the probabilities at game start, we need to compute the probabilities of 100 game state, which is the sum of loosing at 1/3rd and 2 infinite branches.
 
-Fortunately, the probability of one of these infinite branches have just been computed.
+Fortunately, the probability of one of these infinite branches have just been computed, so we can propagate it to its parent node 100.
 
 Due to this, 100 game state starts a tree with:
 
@@ -178,6 +178,38 @@ From 100 node point of view, it is 1/3*1/2.
 
 If the 100 node repeat itself infinitely, this node probability will be multiplied by 1/2, so it would become 1/2*1/2.
 
-This is how we get the probabilities 
+This is how we get the probabilities of node 100 :
 
+ * 1/2*1/3 = 1/6 for loosing and winning from bridge branch
+ * 1/3 of loosing from ice branch
+ * 1/2*(bridge branch + ice branch) = 1/2 * (1/2*1/3 + 1/3) = 1/2 * (3/6) = 3/12 of loosing from Igloo branch 
+ * 1/2*(bridge branch) = 1/2 * (1/2*1/3) = 1/2 * (1/6) = 1/12 of winning from Igloo branch 
 
+By adding all these probabilities, we can conclude that for the simplified game e1 ice pillard and 1 animal, the probabilities are:
+
+ * 1/6+1/12 = 3/12 = 1/4 of winning
+ * 1/6+1/3+3/12 = 9/12 = 3/4 of loosing
+
+## Implement the solution in the actual game
+
+We just figured out how to compute the probabilities of infinite branches in a simplified version of the game.
+
+Let's see now how to check if this solving method works in the much bigger tree of real game with 6 ice pillards and 4 animals.
+
+To do so, we need to proceed in two times:
+
+ * First we generate the whole tree of states from the root node 600. As the tree is infinite, we will stop generating lower for all game states already seen once. Thus, we won't end generating an infinite tree, but still be able to detect parts nodes with only one infinite branch of same state (like the 101 node seen in the simplified game)
+ * Second, we will walk this generated tree to find computable nodes, i.e. with only one infinite branch of not yet computed probability.
+
+The second time, we will need to walk the entire tree several times as the new probabilities are discovered at the leaf of the tree, and need to be used for upper branches and the trunc.
+Actually, we will walk the entire tree the second time as long as at least one new probably has been computed.
+
+With the algorithm described above, we can therefore figure out if this method works for the tree of real game:
+
+And it's working!
+
+You can try to run the python code of this repository by yourself, or just tte the following lines to have the answer to tte initial question:
+
+What is the exact probability to win at this game?
+
+It is 148901 / 314928 ~ 47,28 %
