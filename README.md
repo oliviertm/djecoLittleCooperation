@@ -199,7 +199,7 @@ Let's see now how to check if this solving method works in the much bigger tree 
 To do so, we need to proceed in two times:
 
  * First we generate the whole tree of states from the root node 600. As the tree is infinite, we will stop generating lower for all game states already seen once. Thus, we won't end generating an infinite tree, but still be able to detect parts nodes with only one infinite branch of same state (like the 101 node seen in the simplified game)
- * Second, we will walk this generated tree to find computable nodes, i.e. with only one infinite branch of not yet computed probability.
+ * Second, we will walk this generated tree to find computable nodes, i.e. with only one infinite branch starting with same game state as its parent node.
 
 The second time, we will need to walk the entire tree several times as the new probabilities are discovered at the leaf of the tree, and need to be used for upper branches and the trunc.
 Actually, we will walk the entire tree the second time as long as at least one new probably has been computed.
